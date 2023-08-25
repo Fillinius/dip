@@ -1,0 +1,415 @@
+{
+  "furniturs": [
+    {
+      "_id": "64a8fd84c363642a790429fa",
+      "type": {
+        "_id": "64a59f60500d47342b035ef2",
+        "type": "Тумба",
+        "createdAt": "2023-07-05T16:50:40.008Z",
+        "updatedAt": "2023-07-05T16:50:40.008Z",
+        "__v": 0
+      },
+      "vendor_code": "1",
+      "name": "Тумба коллекция classic",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Maggie",
+      "qualites": [
+        {
+          "_id": "64a599d5043bb2c50c08cd4d",
+          "name": "Черный",
+          "color": "black",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4e",
+          "name": "Коричневый",
+          "color": "warning",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4c",
+          "name": "Белый",
+          "color": "info",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        }
+      ],
+      "sizes": [
+        { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+        { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+        { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+      ],
+      "price": 1164,
+      "createdAt": "2023-07-08T06:09:08.733Z",
+      "updatedAt": "2023-07-08T06:09:08.733Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fdadc363642a790429fd",
+      "type": {
+        "_id": "64a59f60500d47342b035ef2",
+        "type": "Тумба",
+        "createdAt": "2023-07-05T16:50:40.008Z",
+        "updatedAt": "2023-07-05T16:50:40.008Z",
+        "__v": 0
+      },
+      "vendor_code": "2",
+      "name": "Тумба коллекция classic",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Mittens",
+      "qualites": [
+        {
+          "_id": "64a599d5043bb2c50c08cd4d",
+          "name": "Черный",
+          "color": "black",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4e",
+          "name": "Коричневый",
+          "color": "warning",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        }
+      ],
+      "sizes": [
+        { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+        { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+        { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+      ],
+      "price": 2266,
+      "createdAt": "2023-07-08T06:09:49.281Z",
+      "updatedAt": "2023-07-08T06:09:49.281Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fdc4c363642a79042a00",
+      "type": {
+        "_id": "64a59f60500d47342b035ef2",
+        "type": "Тумба",
+        "createdAt": "2023-07-05T16:50:40.008Z",
+        "updatedAt": "2023-07-05T16:50:40.008Z",
+        "__v": 0
+      },
+      "vendor_code": "3",
+      "name": "Тумба коллекция standart",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Misty",
+      "qualites": [
+        {
+          "_id": "64a599d5043bb2c50c08cd4e",
+          "name": "Коричневый",
+          "color": "warning",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4c",
+          "name": "Белый",
+          "color": "info",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        }
+      ],
+      "sizes": [
+        { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+        { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+        { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+      ],
+      "price": 1275,
+      "createdAt": "2023-07-08T06:10:12.411Z",
+      "updatedAt": "2023-07-08T06:10:12.411Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fe1ac363642a79042a03",
+      "type": {
+        "_id": "64a59f60500d47342b035eef",
+        "type": "Шкаф",
+        "createdAt": "2023-07-05T16:50:40.007Z",
+        "updatedAt": "2023-07-05T16:50:40.007Z",
+        "__v": 0
+      },
+      "vendor_code": "4",
+      "name": "Шкаф зеркальный коллекция standart",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Bubba",
+      "qualites": [
+        {
+          "_id": "64a599d5043bb2c50c08cd4d",
+          "name": "Черный",
+          "color": "black",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4c",
+          "name": "Белый",
+          "color": "info",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        }
+      ],
+      "sizes": [
+        { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+        { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+        { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+      ],
+      "price": 2277,
+      "createdAt": "2023-07-08T06:11:38.042Z",
+      "updatedAt": "2023-07-08T06:11:38.042Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fe28c363642a79042a06",
+      "type": {
+        "_id": "64a59f60500d47342b035eef",
+        "type": "Шкаф",
+        "createdAt": "2023-07-05T16:50:40.007Z",
+        "updatedAt": "2023-07-05T16:50:40.007Z",
+        "__v": 0
+      },
+      "vendor_code": "5",
+      "name": "Шкаф зеркальный коллекция classic",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Muffin",
+      "qualites": [
+        {
+          "_id": "64a599d5043bb2c50c08cd4d",
+          "name": "Черный",
+          "color": "black",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4e",
+          "name": "Коричневый",
+          "color": "warning",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4c",
+          "name": "Белый",
+          "color": "info",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        }
+      ],
+      "sizes": [
+        { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+        { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+        { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+      ],
+      "price": 4430,
+      "createdAt": "2023-07-08T06:11:52.727Z",
+      "updatedAt": "2023-07-08T06:11:52.727Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fe3fc363642a79042a09",
+      "type": {
+        "_id": "64a59f60500d47342b035ef0",
+        "type": "Пенал",
+        "createdAt": "2023-07-05T16:50:40.008Z",
+        "updatedAt": "2023-07-05T16:50:40.008Z",
+        "__v": 0
+      },
+      "vendor_code": "6",
+      "name": "Пенал коллекция classic",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Bob",
+      "qualites": [
+        {
+          "_id": "64a599d5043bb2c50c08cd4d",
+          "name": "Черный",
+          "color": "black",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4e",
+          "name": "Коричневый",
+          "color": "warning",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4c",
+          "name": "Белый",
+          "color": "info",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        }
+      ],
+      "sizes": [
+        { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+        { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+        { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+      ],
+      "price": 1434,
+      "createdAt": "2023-07-08T06:12:15.542Z",
+      "updatedAt": "2023-07-08T06:12:15.542Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fe4cc363642a79042a0c",
+      "type": {
+        "_id": "64a59f60500d47342b035ef0",
+        "type": "Пенал",
+        "createdAt": "2023-07-05T16:50:40.008Z",
+        "updatedAt": "2023-07-05T16:50:40.008Z",
+        "__v": 0
+      },
+      "vendor_code": "7",
+      "name": "Пенал коллекция standart",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Sasha",
+      "qualites": [
+        {
+          "_id": "64a599d5043bb2c50c08cd4d",
+          "name": "Черный",
+          "color": "black",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4e",
+          "name": "Коричневый",
+          "color": "warning",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        },
+        {
+          "_id": "64a599d5043bb2c50c08cd4c",
+          "name": "Белый",
+          "color": "info",
+          "createdAt": "2023-07-05T16:27:01.835Z",
+          "updatedAt": "2023-07-05T16:27:01.835Z",
+          "__v": 0
+        }
+      ],
+      "sizes": [
+        { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+        { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+        { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+      ],
+      "price": 2459,
+      "createdAt": "2023-07-08T06:12:28.514Z",
+      "updatedAt": "2023-07-08T06:12:28.514Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fe7ac363642a79042a0f",
+      "type": {
+        "_id": "64a59f60500d47342b035ef1",
+        "type": "Зеркало",
+        "createdAt": "2023-07-05T16:50:40.008Z",
+        "updatedAt": "2023-07-05T16:50:40.008Z",
+        "__v": 0
+      },
+      "vendor_code": "8",
+      "name": "Зеркало коллекция standart",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Cleo",
+      "qualites": [],
+      "sizes": [{ "_id": "67rdca3eeb7f6fgeed471824", "size": "600" }],
+      "price": 1962,
+      "createdAt": "2023-07-08T06:13:14.941Z",
+      "updatedAt": "2023-07-08T06:13:14.941Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a8fe94c363642a79042a13",
+      "type": {
+        "_id": "64a59f60500d47342b035ef1",
+        "type": "Зеркало",
+        "createdAt": "2023-07-05T16:50:40.008Z",
+        "updatedAt": "2023-07-05T16:50:40.008Z",
+        "__v": 0
+      },
+      "vendor_code": "9",
+      "name": "Зеркало коллекция classic",
+      "image": "https://api.dicebear.com/6.x/shapes/svg?seed=Gizmo",
+      "qualites": [],
+      "sizes": [{ "_id": "67rdca3eeb7f6fgeed471824", "size": "600" }],
+      "price": 1308,
+      "createdAt": "2023-07-08T06:13:40.033Z",
+      "updatedAt": "2023-07-08T06:13:40.033Z",
+      "__v": 0
+    }
+  ],
+  "qualities": [
+    {
+      "_id": "64a599d5043bb2c50c08cd4d",
+      "name": "Черный",
+      "color": "black",
+      "createdAt": "2023-07-05T16:27:01.835Z",
+      "updatedAt": "2023-07-05T16:27:01.835Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a599d5043bb2c50c08cd4e",
+      "name": "Коричневый",
+      "color": "warning",
+      "createdAt": "2023-07-05T16:27:01.835Z",
+      "updatedAt": "2023-07-05T16:27:01.835Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a599d5043bb2c50c08cd4c",
+      "name": "Белый",
+      "color": "info",
+      "createdAt": "2023-07-05T16:27:01.835Z",
+      "updatedAt": "2023-07-05T16:27:01.835Z",
+      "__v": 0
+    }
+  ],
+  "types": [
+    {
+      "_id": "64a59f60500d47342b035eef",
+      "type": "Шкаф",
+      "createdAt": "2023-07-05T16:50:40.007Z",
+      "updatedAt": "2023-07-05T16:50:40.007Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a59f60500d47342b035ef1",
+      "type": "Зеркало",
+      "createdAt": "2023-07-05T16:50:40.008Z",
+      "updatedAt": "2023-07-05T16:50:40.008Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a59f60500d47342b035ef0",
+      "type": "Пенал",
+      "createdAt": "2023-07-05T16:50:40.008Z",
+      "updatedAt": "2023-07-05T16:50:40.008Z",
+      "__v": 0
+    },
+    {
+      "_id": "64a59f60500d47342b035ef2",
+      "type": "Тумба",
+      "createdAt": "2023-07-05T16:50:40.008Z",
+      "updatedAt": "2023-07-05T16:50:40.008Z",
+      "__v": 0
+    }
+  ],
+  "sizes": [
+    { "_id": "67rdca3eeb7f6fgeed471822", "size": "400" },
+    { "_id": "67rdca3eeb7f6fgeed471824", "size": "600" },
+    { "_id": "67rdca3eeb7f6fgeed471829", "size": "800" }
+  ]
+}

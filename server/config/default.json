@@ -1,0 +1,6 @@
+{
+  "port": 1808,
+  "baseUri": "mongodb+srv://skorabeyf:ymbXzcGT1UKuVKTQ@cluster0.ndjcyol.mongodb.net/app-furniture?retryWrites=true&w=majority",
+  "accessSecret": "secret from diplom",
+  "refreshSecret": "secret super from diplom"
+}
