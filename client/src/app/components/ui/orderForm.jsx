@@ -16,7 +16,6 @@ const OrderForm = () => {
     needLiftFloor: 'no',
     agreement: false
   })
-  // console.log(data);
   const [errors, setErrors] = useState({})
   const history = useHistory()
   const handleReturnBasket = () => {
@@ -44,11 +43,8 @@ const OrderForm = () => {
       isCapitalSymbol: {
         message: 'Поле должено содержать заглавные буквы'
       },
-      // isContainDigit: {
-      //   message: 'Пароль должен содержать хотя бы одно число'
-      // },
       minWord: {
-        message: 'Пароль должен состоями минимум из 3 символов',
+        message: 'Пароль должен состоять минимум из 3 символов',
         value: 3
       }
     },

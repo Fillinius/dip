@@ -5,7 +5,7 @@ export function validator(data, config) {
     switch (validateMetod) {
       case 'isRequared': {
         if (typeof data === 'boolean') {
-          statusValidate = data
+          statusValidate = !data
         } else {
           statusValidate = data.trim() === ''
         }

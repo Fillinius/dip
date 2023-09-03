@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Search from '../ui/search';
 import Loader from '../../utils/loader';
@@ -11,10 +10,14 @@ import { useSize } from '../../hooks/useSize';
 import { useSelector } from 'react-redux';
 import { getFurniturs } from '../../store/furniturs';
 import FurnitursListPage from './furnitursListPage';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import { getUserId } from '../../services/localstorage.service';
+import { getUsersById } from '../../store/users';
 
 const FurnitursList = () => {
   const furniturs = useSelector(getFurniturs())
+  const userId = getUserId()
+  const userById = useSelector(getUsersById(userId))
   const { furnitursId } = useParams()
   const { types, isLoading: isLoadingType } = useType()
   const { sizes, isLoading: isLoadingSizes } = useSize()
@@ -55,6 +58,11 @@ const FurnitursList = () => {
             value={search}
             onChange={handleChangeSearch}
           />
+          {userById && userById.name === 'Администратор' && (<><hr />
+            <h3>Создание нового товара</h3>
+            <Link to={'/registrationProduct'}>Создать новый товар</Link>
+            <hr />
+          </>)}
           {furniturs.length > 0
             ? <>
               <div className="d-flex col">

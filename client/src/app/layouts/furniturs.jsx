@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import Furniture from '../components/ui/furniture';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDataStatusFurnitur, loadFurnitursList } from '../store/furniturs';
-// import EditFurniturePage from '../components/page/editFurniturePage';
+import EditFurniturePage from '../components/page/editFurniturePage';
 
 const Furniturs = () => {
-  const { furnitureId } = useParams()
+  const { furnitureId, edit } = useParams()
   const dataStatus = useSelector(getDataStatusFurnitur())
   const dispatch = useDispatch()
   useEffect(() => {
@@ -18,7 +18,7 @@ const Furniturs = () => {
   if (!dataStatus) return 'Loading furniturs...'
   return (<>
     {furnitureId
-      ? (<Furniture id={furnitureId} />)
+      ? (edit ? (<EditFurniturePage />) : (<Furniture id={furnitureId} />))
       : (<FurnitursList />)
     }
   </>

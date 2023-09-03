@@ -7,6 +7,17 @@ const furnitursService = {
     const { data } = await httpService.get(furnitureEndPoint)
     return data
   },
+  removeFurniturs: async (furnitureId) => {
+    const { data } = await httpService.delete(furnitureEndPoint + furnitureId)
+    return data
+  },
+  getUpdateFurniturs: async (payload, furnitureId) => {
+    const { data } = await httpService.patch(
+      furnitureEndPoint + furnitureId,
+      payload
+    )
+    return data
+  },
 }
 
 export default furnitursService

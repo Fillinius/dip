@@ -26,8 +26,8 @@ const AboutCompany = () => {
           onClick={handleClick}
         >Инициализировать</button>
       </>}
-
     </div>
+
   )
 }
 

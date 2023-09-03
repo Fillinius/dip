@@ -43,9 +43,6 @@ router.post('/signUp', [
       }
 
       const hasedPassword = await bcrypt.hash(password, 12)
-      // console.log(req.body)
-      // console.log(hasedPassword)
-      // console.log(generateUserData())
 
       const newUser = await User.create({
         ...generateUserData(),
@@ -88,7 +85,6 @@ router.post('/signInWithPassword', [
       }
       const { email, password } = req.body
       const existingUser = await User.findOne({ email })
-      // console.log(req.body)
       if (!existingUser) {
         return res.status(400).json({
           error: {
@@ -131,14 +127,11 @@ router.post('/token', async (req, res) => {
     const { refresh_token: refreshToken } = req.body
     const data = tokenService.validateRefresh(refreshToken)
     const dbToken = await tokenService.findToken(refreshToken)
-    console.log(data)
-    console.log(dbToken)
     if (isTokenInvalid(data, dbToken)) {
       return res.status(401).json({ message: 'Unauthorized' })
     }
     const tokens = await tokenService.generate({ _id: data._id })
     await tokenService.save(data._id, tokens.refreshToken)
-    // res.status(200).send({ tokens })
     res.status(200).send({ ...tokens, userId: data._id })
   } catch (error) {
     res.status(500).json({

@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAction, createSlice } from '@reduxjs/toolkit'
 import furnitursService from '../services/furnitursService'
+import registrationProductService from '../services/registrationProductService'
 
 const furnitursSlice = createSlice({
   name: 'furniturs',
@@ -22,11 +23,46 @@ const furnitursSlice = createSlice({
       state.error = action.payload
       state.isLoading = false
     },
+    furnitursRegistration: (state, action) => {
+      if (!Array.isArray(state.entities)) {
+        state.entities = [...state.entities, state.entities]
+      }
+      state.entities.push(action.payload)
+    },
+    furnitursRemove: (state, action) => {
+      state.entities = state.entities.filter(
+        (state) => state._id !== action.payload
+      )
+    },
+    furnitursUpdata: (state, action) => {
+      state.entities[
+        state.entities.findIndex((f) => f._id === action.payload._id)
+      ] = action.payload
+    },
   },
 })
 
 const { reducer: furnitursReducer, actions } = furnitursSlice
-const { furnitursRequested, furnitursRecived, furnitursRequestFiled } = actions
+const {
+  furnitursRequested,
+  furnitursRecived,
+  furnitursRequestFiled,
+  furnitursRegistration,
+  furnitursUpdate,
+  furnitursRemove,
+} = actions
+const registrationRequested = createAction('furniturs/registrationRequested')
+const registrationRequestFaild = createAction(
+  'furniturs/registrationRequestFaild'
+)
+const furnitursRemoveRequested = createAction(
+  'furniturs/furnitursRemoveRequested'
+)
+const furnitursRemoveFailed = createAction('furniturs/furnitursRemoveFailed')
+const furnitursUdateRequested = createAction(
+  'furniturs/furnitursUdateRequested'
+)
+const furnitursUpdateFailed = createAction('furniturs/furnitursUpdateFailed')
 
 export const loadFurnitursList = () => async (dispatch) => {
   dispatch(furnitursRequested())
@@ -35,6 +71,42 @@ export const loadFurnitursList = () => async (dispatch) => {
     dispatch(furnitursRecived(content))
   } catch (error) {
     dispatch(furnitursRequestFiled(error))
+  }
+}
+export const registrationFurniturs = (payload) => async (dispatch) => {
+  dispatch(registrationRequested())
+  try {
+    const data = await registrationProductService.registration(payload)
+    dispatch(furnitursRegistration(data))
+    history.push('/furniturs')
+  } catch (error) {
+    dispatch(registrationRequestFaild(error.message))
+  }
+}
+export const getUpdateFurnitursData =
+  (payload, furnitureId) => async (dispatch) => {
+    dispatch(furnitursUdateRequested())
+    try {
+      const data = await furnitursService.getUpdateFurniturs(
+        payload,
+        furnitureId
+      )
+      dispatch(furnitursUpdate(data))
+      history.push(`/furniturs/${data._id}`)
+    } catch (error) {
+      dispatch(furnitursUpdateFailed(error.message))
+    }
+  }
+
+export const removeFurniturs = (id) => async (dispatch) => {
+  dispatch(furnitursRemoveRequested())
+  try {
+    const data = await furnitursService.removeFurniturs(id)
+    if (!data) {
+      dispatch(furnitursRemove(id))
+    }
+  } catch (error) {
+    dispatch(furnitursRemoveFailed(error.message))
   }
 }
 

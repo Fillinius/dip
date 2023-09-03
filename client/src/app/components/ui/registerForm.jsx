@@ -30,7 +30,7 @@ const RegisterForm = () => {
         message: 'Поле обязательно для заполнения'
       },
       minWord: {
-        message: 'Пароль должен состоями минимум из 3 символов',
+        message: 'Пароль должен состоять минимум из 3 символов',
         value: 3
       }
     },
@@ -53,7 +53,7 @@ const RegisterForm = () => {
         message: 'Пароль должен содержать хотя бы одно число'
       },
       minWord: {
-        message: 'Пароль должен состоями минимум из 8 символов',
+        message: 'Пароль должен состоять минимум из 8 символов',
         value: 8
       }
     },
@@ -83,6 +83,7 @@ const RegisterForm = () => {
   }
 
   return (
+
     <form onSubmit={handleSubmit}>
       <TextField
         label="Имя"
@@ -117,6 +118,7 @@ const RegisterForm = () => {
         className='btn btn-primary'
       >Submit</button>
     </form>
+
   );
 }
 
