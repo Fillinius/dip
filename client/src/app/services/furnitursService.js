@@ -18,6 +18,11 @@ const furnitursService = {
     )
     return data
   },
+  getFurnitursByBasket: async () => {
+    const { data } = await httpService.get(furnitureEndPoint)
+    console.log(data)
+    return data
+  },
 }
 
 export default furnitursService

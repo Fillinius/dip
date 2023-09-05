@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
-import { getFurnitursById, registrationFurniturs } from '../../store/furniturs';
+import { getFurnitursById, getUpdateFurnitursData } from '../../store/furniturs';
 import { validator } from '../../utils/validator';
 import TextField from '../common/form/textField';
 import SelectField from '../common/form/selectField';
@@ -13,8 +13,7 @@ import { getQualities, getQualitiesLoading } from '../../store/qualities';
 const EditFurniturePage = () => {
   const dispatch = useDispatch()
   const { furnitureId } = useParams()
-  console.log(useParams());
-  const currenFurniture = useSelector(getFurnitursById(furnitureId))
+  const currentFurniture = useSelector(getFurnitursById(furnitureId))
   const [data, setData] = useState()
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(true)
@@ -23,6 +22,51 @@ const EditFurniturePage = () => {
   const { sizes, isLoading: isLoadingSize } = useSize()
   const qualities = useSelector(getQualities())
   const isLoadingQuality = useSelector(getQualitiesLoading())
+
+  function getQuality(element) {
+    const qualityArray = []
+    for (const elem of element) {
+      for (const qual of qualities) {
+        if (elem === qual._id) {
+          qualityArray.push(qual)
+          break
+        }
+      }
+    }
+    return qualityArray
+  }
+
+  function getSize(element) {
+    const sizeArray = []
+    for (const elem of element) {
+      for (const s of sizes) {
+        if (elem === s._id) {
+          sizeArray.push(s)
+          break
+        }
+      }
+    }
+    return sizeArray
+  }
+  const transformDataSize = () => getSize(currentFurniture.sizes).map(z => ({ label: z.size, value: z._id }))
+  const transformDataQuality = () => getQuality(currentFurniture.qualities).map(q => ({ label: q.name, value: q._id }))
+
+  useEffect(() => {
+    if (!data && !isLoadingType && !isLoadingSize && !isLoadingQuality && currentFurniture) {
+      setData({
+        ...currentFurniture,
+        qualities: transformDataQuality(),
+        sizes: transformDataSize()
+      })
+    }
+  }, [data, isLoadingType, isLoadingSize, isLoadingQuality, currentFurniture])
+
+  useEffect(() => {
+    if (data && isLoading) {
+      setIsLoading(false)
+    }
+  }, [data])
+
   const qualitiesList = qualities.map(q => ({
     label: q.name,
     value: q._id
@@ -37,17 +81,6 @@ const EditFurniturePage = () => {
     label: z.size,
     value: z._id
   }))
-  useEffect(() => {
-    if (!data && !isLoadingType && !isLoadingSize && !isLoadingQuality && currenFurniture) { setData(currenFurniture) }
-  }, [data, isLoadingType, isLoadingSize, isLoadingQuality, currenFurniture])
-  console.log(currenFurniture, 'current');
-
-  useEffect(() => {
-    if (data && isLoading) {
-      setIsLoading(false)
-    }
-  }, [data])
-  console.log(data);
 
   const handleChange = ({ target }) => {
     setData((prevstate) => ({
@@ -98,7 +131,7 @@ const EditFurniturePage = () => {
     if (!isValid) return
     const changeData = { ...data, qualities: data.qualities.map((q) => q.value), sizes: data.sizes.map((z) => z.value) }
     console.log(changeData);
-    dispatch(registrationFurniturs(changeData))
+    dispatch(getUpdateFurnitursData(changeData))
     history.push('furniturs/')
   }
 

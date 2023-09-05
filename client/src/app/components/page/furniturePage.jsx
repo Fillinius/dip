@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import FurnitureCard from '../ui/furnitureCard';
 import QualityCard from '../ui/qualityCard';
@@ -8,23 +8,38 @@ import { getUserId } from '../../services/localstorage.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersById } from '../../store/users';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { removeFurniturs } from '../../store/furniturs';
+import { getFurnitursById, removeFurniturs } from '../../store/furniturs';
+import { createItemBasket, loadbasketList } from '../../store/basket';
 
 const FurniturePage = ({ furniture }) => {
   const userId = getUserId()
   const userById = useSelector(getUsersById(userId))
   const dispatch = useDispatch()
   const { furnitureId } = useParams()
+  const furnitureById = useSelector(getFurnitursById(furnitureId))
   const history = useHistory()
+
+  useEffect(() => {
+    dispatch(loadbasketList(furnitureId))
+  }, [furnitureId])
+
   const handleDeleteFurniturs = () => {
     dispatch(removeFurniturs(furnitureId))
   }
   const handleChangeFurniturs = () => {
     history.push(`${furnitureId}/edit`)
-    // history.push(`/edit`)
+  }
+
+  const handleBuy = () => {
+    dispatch(createItemBasket({ ...furnitureById, pageId: furnitureId }))
+    history.push('/basket')
   }
   return (
     <div className='container'>
+      <button
+        className='btn btn-info m-2'
+        onClick={handleBuy}
+      >Buy</button>
       {userById && userById.name === 'Администратор' && <>  (
         <button
           className='btn btn-success m-2'

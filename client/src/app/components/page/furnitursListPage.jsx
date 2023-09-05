@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const FurnitursListPage = ({ furnitustList, onChange }) => {
+const FurnitursListPage = ({ furnitustList }) => {
   return (
     <>
       {furnitustList ? (furnitustList.map((furniture) => (
@@ -11,9 +11,6 @@ const FurnitursListPage = ({ furnitustList, onChange }) => {
           <h5>{furniture.name}</h5>
           <p>Описание товара и прочее</p>
           <p>{furniture.price},руб.</p>
-          <button
-            className="btn btn-primary"
-            onClick={onChange} >Buy</button>
         </Link>
       ))
       ) : 'Loading list...'}</>

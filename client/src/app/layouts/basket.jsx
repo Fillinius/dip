@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Counter from '../components/common/counter';
 import StatusBuyItems from '../components/common/statusBuyItems';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { useSelector } from 'react-redux';
-import { getFurniturs } from '../store/furniturs';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUserData } from '../store/users';
+import { getbasket, removeItemBasket } from '../store/basket';
 
 const Basket = () => {
-  const furniturs = useSelector(getFurniturs())
+  const furnitursBasket = useSelector(getbasket())
+  const [furniturs, setFurniturs] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [total, setTotal] = useState(0)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (furniturs.length === 0 && furnitursBasket) {
+      setFurniturs(furnitursBasket)
+    }
+  }, [furnitursBasket, furniturs])
+  useEffect(() => {
+    if (furniturs && isLoading) {
+      setIsLoading(false)
+    }
+  }, [furniturs])
   const currentUser = useSelector(getCurrentUserData())
-  const totalPrice = furniturs.reduce((acc, item) => {
-    return acc + item.price
-  }, 0)
+
+  if (furniturs) {
+    useEffect(() => {
+      setTotal(furniturs.reduce((acc, item) => {
+        return acc + item.price
+      }, 0))
+    }, [furniturs])
+  }
 
   const handleDeleteItem = (id) => {
-    // setItems(prevStates => prevStates.filter((prevState) => prevState._id !== id))
+    dispatch(removeItemBasket(id))
   }
   const hahdleReset = () => {
-    // setItems([])
+    setFurniturs([])
   }
   const renderitemsList = () => {
-    return furniturs.length !== 0 && (
+    return furniturs && (
       <div>
         {furniturs.map((item) => (
           <Counter
@@ -31,7 +51,7 @@ const Basket = () => {
             onDelete={handleDeleteItem}
           />
         ))}
-        <h3>Итоговая стоимость: {totalPrice} руб.</h3>
+        <h3>Итоговая стоимость: {total} руб.</h3>
         <button
           className='btn btn-secondary'
           onClick={hahdleReset}>Очистка корзины</button>
@@ -41,7 +61,7 @@ const Basket = () => {
       </div>
     )
   }
-  if (furniturs.length !== 0) {
+  if (furniturs) {
     return (
       <>
         <h1>Корзина</h1>
@@ -57,10 +77,14 @@ const Basket = () => {
     )
   }
   return (
-    <div className='m-5'>
-      <h1>Корзина</h1>
-      <span className={'badge' + (furniturs.length > 0 ? 'bg-primary' : 'bg-danger')}>Вы еще не положили товары в корзину</span>
-    </div>
+    <>
+      {
+        <div className='m-5'>
+          <h1>Корзина</h1>
+          <span className={'badge' + (furniturs ? 'bg-primary' : 'bg-danger')}>Вы еще не положили товары в корзину</span>
+        </div>
+      }
+    </>
   )
 }
 

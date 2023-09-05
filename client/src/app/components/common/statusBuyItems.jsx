@@ -18,7 +18,7 @@ const StatusBuyItems = ({ listItem }) => {
       >
         {listItem > 0
           ? `${listItem + ' ' + renderPhrase(listItem)}   в твоей корзине`
-          : 'Укажите колличество необходимого товара'}
+          : 'Вы еще ничего не выбрали'}
       </span>
     </h2>
   );

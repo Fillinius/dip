@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Counter = ({ id, name, price, onDelete }) => {
   // блок реализация функционала корзины
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(1)
   const formatCount = () => {
     return count === 0 ? 'empty ' : count
   }

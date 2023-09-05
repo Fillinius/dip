@@ -10,7 +10,7 @@ import { useSize } from '../../hooks/useSize';
 import { useSelector } from 'react-redux';
 import { getFurniturs } from '../../store/furniturs';
 import FurnitursListPage from './furnitursListPage';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getUserId } from '../../services/localstorage.service';
 import { getUsersById } from '../../store/users';
 
@@ -18,7 +18,8 @@ const FurnitursList = () => {
   const furniturs = useSelector(getFurniturs())
   const userId = getUserId()
   const userById = useSelector(getUsersById(userId))
-  const { furnitursId } = useParams()
+  // const furnitureId = useParams()
+  // console.log(useParams());
   const { types, isLoading: isLoadingType } = useType()
   const { sizes, isLoading: isLoadingSizes } = useSize()
   const [search, setSearch] = useState('')
@@ -38,12 +39,7 @@ const FurnitursList = () => {
     setCurrentPage(pageIndex)
   }
   const userCrop = paginate(furniturs, currentPage, pageSize)
-  // ф-я покупки товара
-  const handleBuy = () => {
-    console.log('click');
-    const furnitursBuy = furniturs.find((f) => f._id === furnitursId)
-    console.log(furnitursBuy);
-  }
+
   return (
     <>
       <div className='d-flex'>
@@ -66,18 +62,18 @@ const FurnitursList = () => {
           {furniturs.length > 0
             ? <>
               <div className="d-flex col">
-                <FurnitursListPage furnitustList={search === '' ? userCrop : filterSearchText} onChange={handleBuy} />
-              </div>
-              <div className="d-flex justify-content-center">
-                <Pagination
-                  itemsCount={search === '' ? count : filterSearchText}
-                  size={pageSize}
-                  currentPage={currentPage}
-                  onPageChange={handleChangePage} />
+                <FurnitursListPage furnitustList={search === '' ? userCrop : filterSearchText} />
               </div>
             </>
             : <Loader />
           }
+          <div className="d-flex justify-content-center">
+            <Pagination
+              itemsCount={search === '' ? count : filterSearchText}
+              size={pageSize}
+              currentPage={currentPage}
+              onPageChange={handleChangePage} />
+          </div>
         </div>
 
       </div >
