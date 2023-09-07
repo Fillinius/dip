@@ -2,14 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const CheckBoxField = ({ name, value, onChange, children }) => {
-  // const handleChange = () => {
-  //   onChange({ name: name, value: !value })
-  // }
   const [checked, setCheked] = useState(false)
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-  // }
-  // console.log(handleSubmit);
   const handleChange = () => {
     setCheked((prev) => !prev)
   }

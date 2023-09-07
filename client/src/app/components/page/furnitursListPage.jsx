@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const FurnitursListPage = ({ furnitustList }) => {
+  // const history = useHistory()
+  // ${history.location.pathname}
   return (
     <>
       {furnitustList ? (furnitustList.map((furniture) => (

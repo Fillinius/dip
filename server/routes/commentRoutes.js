@@ -35,8 +35,6 @@ router.delete('/:commentId', auth, async (req, res) => {
   try {
     const { commentId } = req.params
     const removedComment = await Comment.findById(commentId)
-    console.log(removedComment.userId.toString(), 'remove')
-    console.log(req.user._id, 'user')
     if (removedComment.userId.toString() === req.user._id) {
       await removedComment.deleteOne()
       return res.send(null)

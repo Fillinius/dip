@@ -8,5 +8,6 @@ router.use('/sizes', require('./sizeRouters'))
 router.use('/users', require('./userRoutes'))
 router.use('/furniturs', require('./furnitureRoutes'))
 router.use('/comments', require('./commentRoutes'))
+router.use('/registrationProduct', require('./registrationProductRoutes'))
 
 module.exports = router

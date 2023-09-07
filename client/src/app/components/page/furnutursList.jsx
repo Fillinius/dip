@@ -18,8 +18,6 @@ const FurnitursList = () => {
   const furniturs = useSelector(getFurniturs())
   const userId = getUserId()
   const userById = useSelector(getUsersById(userId))
-  // const furnitureId = useParams()
-  // console.log(useParams());
   const { types, isLoading: isLoadingType } = useType()
   const { sizes, isLoading: isLoadingSizes } = useSize()
   const [search, setSearch] = useState('')
@@ -43,7 +41,6 @@ const FurnitursList = () => {
   return (
     <>
       <div className='d-flex'>
-
         {!isLoadingType && !isLoadingSizes && (
           <div className="d-flex flex-column flex-shrink-0 p-3">
             <GroupList types={types} sizes={sizes} />
@@ -75,11 +72,8 @@ const FurnitursList = () => {
               onPageChange={handleChangePage} />
           </div>
         </div>
-
       </div >
-
     </>
-
   );
 }
 FurnitursList.propTypes = {

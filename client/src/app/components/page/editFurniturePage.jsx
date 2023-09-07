@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getFurnitursById, getUpdateFurnitursData } from '../../store/furniturs';
 import { validator } from '../../utils/validator';
 import TextField from '../common/form/textField';
@@ -17,7 +17,6 @@ const EditFurniturePage = () => {
   const [data, setData] = useState()
   const [errors, setErrors] = useState({})
   const [isLoading, setIsLoading] = useState(true)
-  const history = useHistory()
   const { types, isloading: isLoadingType } = useType()
   const { sizes, isLoading: isLoadingSize } = useSize()
   const qualities = useSelector(getQualities())
@@ -48,6 +47,7 @@ const EditFurniturePage = () => {
     }
     return sizeArray
   }
+
   const transformDataSize = () => getSize(currentFurniture.sizes).map(z => ({ label: z.size, value: z._id }))
   const transformDataQuality = () => getQuality(currentFurniture.qualities).map(q => ({ label: q.name, value: q._id }))
 
@@ -130,9 +130,7 @@ const EditFurniturePage = () => {
     const isValid = validate()
     if (!isValid) return
     const changeData = { ...data, qualities: data.qualities.map((q) => q.value), sizes: data.sizes.map((z) => z.value) }
-    console.log(changeData);
-    dispatch(getUpdateFurnitursData(changeData))
-    history.push('furniturs/')
+    dispatch(getUpdateFurnitursData(changeData, furnitureId))
   }
 
   return (

@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { validator } from '../utils/validator';
+import { validator } from '../../utils/validator';
 import { useHistory } from 'react-router-dom';
-import { registrationFurniturs } from '../store/furniturs';
-import TextField from '../components/common/form/textField';
-import SelectField from '../components/common/form/selectField';
-import { useType } from '../hooks/useType';
-import MultiSelectField from '../components/common/form/multiSelectField';
-import { getQualities } from '../store/qualities';
-import { useSize } from '../hooks/useSize';
+import { registrationFurniturs } from '../../store/furniturs';
+import TextField from '../common/form/textField';
+import SelectField from '../common/form/selectField';
+import { useType } from '../../hooks/useType';
+import MultiSelectField from '../common/form/multiSelectField';
+import { getQualities } from '../../store/qualities';
+import { useSize } from '../../hooks/useSize';
 
 const RegistrationProduct = () => {
   const dispatch = useDispatch()
   const [data, setData] = useState({
     vendor_code: '',
     name: '',
+    image: '',
     type: '',
     sizes: [],
     qualities: []
@@ -72,6 +73,11 @@ const RegistrationProduct = () => {
       isRequared: {
         message: 'Поле обязательно для заполнения'
       }
+    },
+    image: {
+      isRequared: {
+        message: 'Поле обязательно для заполнения'
+      }
     }
   }
 
@@ -89,7 +95,6 @@ const RegistrationProduct = () => {
     const isValid = validate()
     if (!isValid) return
     const changeData = { ...data, qualities: data.qualities.map((q) => q.value), sizes: data.sizes.map((z) => z.value) }
-    console.log(changeData);
     dispatch(registrationFurniturs(changeData))
     history.push('furniturs/')
   }
@@ -113,6 +118,13 @@ const RegistrationProduct = () => {
               value={data.name}
               onChange={handleChange}
               error={errors.name} />
+            <TextField
+              label="Ссылка на фото товара"
+              type="text"
+              name="image"
+              value={data.image}
+              onChange={handleChange}
+              error={errors.image} />
             <SelectField
               label='Тип товара'
               name='type'

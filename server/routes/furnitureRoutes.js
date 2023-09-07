@@ -47,16 +47,16 @@ router.post('/', async (req, res) => {
 })
 
 // изменение карточки по id
-router.patch('/:furnitureId', auth, async (req, res) => {
+router.patch('/:furnitureId', async (req, res) => {
   try {
     const { furnitureId } = req.params
-    console.log(req.furniture)
-    if (furnitureId === req.furniture._id) {
+    if (furnitureId === req.body._id) {
       const updatedFurniture = await Furniture.findByIdAndUpdate(
         furnitureId,
         req.body,
         { new: true }
       )
+      console.log(updatedFurniture)
       res.status(201).send(updatedFurniture)
     } else {
       res.status(401).json({ message: 'Unauthorized' })
@@ -69,12 +69,21 @@ router.patch('/:furnitureId', auth, async (req, res) => {
 })
 
 // Удаление карточки товара
-router.delete('/:remove', auth, async (req, res) => {
+router.delete('/:furnitureId', async (req, res) => {
   try {
-    const { remove } = req.params
-    const removeFurniture = await Furniture.findById(remove)
-    await removeFurniture.remove()
+    const { furnitureId } = req.params
+    const removeFurniture = await Furniture.findById(furnitureId)
+    await removeFurniture.deleteOne()
+    res.send(null)
+    // При добавлении идентификатора пользователя-админа
+    // if(removeFurniture.userId.toSiring()===reg.user._id){
+    //   await removeFurniture.deleteOne()
+    //   return res.send(null)
+    // }else {
+    //   res.status(401).json({ message: 'Unauthorized' })
+    // }
   } catch (error) {
+    console.log(error.message)
     res.status(500).json({
       message: 'На сервере произошла ошибка. Попробуйте позже',
     })

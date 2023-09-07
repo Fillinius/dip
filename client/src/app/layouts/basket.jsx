@@ -4,7 +4,7 @@ import StatusBuyItems from '../components/common/statusBuyItems';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUserData } from '../store/users';
-import { getbasket, removeItemBasket } from '../store/basket';
+import { cleaningItemBasket, getbasket, removeItemBasket } from '../store/basket';
 
 const Basket = () => {
   const furnitursBasket = useSelector(getbasket())
@@ -14,7 +14,7 @@ const Basket = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (furniturs.length === 0 && furnitursBasket) {
+    if (furniturs && furnitursBasket) {
       setFurniturs(furnitursBasket)
     }
   }, [furnitursBasket, furniturs])
@@ -37,7 +37,7 @@ const Basket = () => {
     dispatch(removeItemBasket(id))
   }
   const hahdleReset = () => {
-    setFurniturs([])
+    dispatch(cleaningItemBasket())
   }
   const renderitemsList = () => {
     return furniturs && (

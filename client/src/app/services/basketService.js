@@ -1,3 +1,5 @@
+// Активировать если требуется сохранение данных на сервере
+
 import httpService from './http.service'
 
 const commentEndPoind = 'basket/'

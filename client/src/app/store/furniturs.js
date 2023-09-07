@@ -34,7 +34,7 @@ const furnitursSlice = createSlice({
         (state) => state._id !== action.payload
       )
     },
-    furnitursUpdata: (state, action) => {
+    furnitursUpdate: (state, action) => {
       state.entities[
         state.entities.findIndex((f) => f._id === action.payload._id)
       ] = action.payload
@@ -92,7 +92,7 @@ export const getUpdateFurnitursData =
         furnitureId
       )
       dispatch(furnitursUpdate(data))
-      history.push(`/furniturs/${data._id}`)
+      history.push(`/furniturs`)
     } catch (error) {
       dispatch(furnitursUpdateFailed(error.message))
     }

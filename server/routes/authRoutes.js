@@ -49,7 +49,6 @@ router.post('/signUp', [
         ...req.body,
         password: hasedPassword,
       })
-      console.log(generateUserData())
       console.log(newUser, 'user')
       const tokens = tokenService.generate({ _id: newUser._id })
       await tokenService.save(newUser._id, tokens.refreshToken)

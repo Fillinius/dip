@@ -37,7 +37,6 @@ http.interceptors.request.use(
     } else {
       if (isExpired) {
         const data = await authService.refresh()
-        // console.log(data, 'data http')
         localStorageService.setTokens(data)
       }
 
@@ -67,7 +66,6 @@ http.interceptors.response.use(
     if (configFile.isFireBase) {
       res.data = transformData(res.data)
     }
-    // res.data = res.data
     return res
   },
   function (error) {
@@ -77,7 +75,6 @@ http.interceptors.response.use(
       error.response.status < 500
 
     if (!expectedErrors) {
-      console.log(error)
       toast.error('Somthing was wrong. Try it later')
     }
     return Promise.reject(error)

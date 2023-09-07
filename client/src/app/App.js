@@ -8,7 +8,7 @@ import Navbar from './components/ui/navBar'
 import NotFound from './components/common/notFound'
 import Furniturs from './layouts/furniturs'
 import LogOut from './layouts/logOut'
-import RegistationProduct from './layouts/registrationProtuct'
+import RegistrationProduct from './components/ui/registrationProtuct'
 import AppLoader from './components/ui/hoc/appLoader'
 import OrderForm from './components/ui/orderForm'
 import { ToastContainer } from 'react-toastify'
@@ -33,7 +33,7 @@ function App() {
               />
               <ProtectedRoute
                 path="/registrationProduct"
-                component={RegistationProduct}
+                component={RegistrationProduct}
               />
               <Route path="/contact" component={Contact} />
               <Route path="/login/:type?" component={Login} />

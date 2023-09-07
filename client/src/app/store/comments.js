@@ -71,6 +71,7 @@ export const createComment = (payload) => async (dispatch, getState) => {
     //   created_at: Date.now(),
     // }
     const content = await commentService.createComment(payload)
+
     dispatch(commentCreated(content))
   } catch (error) {
     dispatch(commentCreateFailed(error.message))

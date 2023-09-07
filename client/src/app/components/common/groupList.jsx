@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TypesList from '../ui/types/typesList';
-import SizesList from '../ui/sizes/sizesList';
+// import SizesList from '../ui/sizes/sizesList';
 
 const GroupList = ({ types, sizes }) => {
   const handleList = () => {
-    console.log('click');
   }
   return (
     <>
@@ -15,11 +14,6 @@ const GroupList = ({ types, sizes }) => {
           По типу
           <button onClick={handleList}></button>
           <TypesList types={types} />
-        </li>
-        <li className="list-group-item">
-          По размеру
-          <button onClick={handleList}></button>
-          <SizesList sizes={sizes} />
         </li>
       </ul>
     </>

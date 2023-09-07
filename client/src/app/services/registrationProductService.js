@@ -8,7 +8,6 @@ const registrationProductService = {
       registrationProductEndPoind,
       payload
     )
-    console.log(data, 'service')
     return data
   },
 }

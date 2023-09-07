@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import FurnitureCard from '../ui/furnitureCard';
 import QualityCard from '../ui/qualityCard';
@@ -7,9 +7,9 @@ import Comments from '../common/comments/comments';
 import { getUserId } from '../../services/localstorage.service';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersById } from '../../store/users';
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useParams } from 'react-router-dom';
 import { getFurnitursById, removeFurniturs } from '../../store/furniturs';
-import { createItemBasket, loadbasketList } from '../../store/basket';
+import { createItemBasket } from '../../store/basket';
 
 const FurniturePage = ({ furniture }) => {
   const userId = getUserId()
@@ -19,12 +19,9 @@ const FurniturePage = ({ furniture }) => {
   const furnitureById = useSelector(getFurnitursById(furnitureId))
   const history = useHistory()
 
-  useEffect(() => {
-    dispatch(loadbasketList(furnitureId))
-  }, [furnitureId])
-
   const handleDeleteFurniturs = () => {
     dispatch(removeFurniturs(furnitureId))
+    history.push('/furniturs')
   }
   const handleChangeFurniturs = () => {
     history.push(`${furnitureId}/edit`)

@@ -20,7 +20,6 @@ const furnitursService = {
   },
   getFurnitursByBasket: async () => {
     const { data } = await httpService.get(furnitureEndPoint)
-    console.log(data)
     return data
   },
 }
