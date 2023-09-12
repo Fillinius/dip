@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const CheckBoxField = ({ name, value, onChange, children }) => {
-  const [checked, setCheked] = useState(false)
+const CheckBoxField = ({ name, value, onChange, children, error }) => {
   const handleChange = () => {
-    setCheked((prev) => !prev)
+    onChange({ name, value: !value })
+  }
+  const getInputClassed = () => {
+    return 'form-check-input' + (error ? 'is-invalid' : '');
   }
   return (
-    <div className="form-check mb-4">
+    <div className='form-check mb-4'>
       <input
-        className="form-check-input"
-        type="checkbox"
-        value=""
+        className={getInputClassed()}
+        type='checkbox'
+        value=''
         id={name}
         onChange={handleChange}
-        checked={checked} />
-      <label className="form-check-label" htmlFor={name}>
+      />
+      <label className='form-check-label' htmlFor={name}>
         {children}
       </label>
+      {error && <div className='invalid-feedback'>{error}</div>}
     </div>
   );
 }
@@ -25,7 +28,8 @@ CheckBoxField.propTypes = {
   name: PropTypes.string,
   value: PropTypes.bool,
   onChange: PropTypes.func,
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node)], PropTypes.node)
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node)], PropTypes.node),
+  error: PropTypes.string
 }
 
 export default CheckBoxField;

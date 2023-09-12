@@ -9,7 +9,7 @@ const FurnitursListPage = ({ furnitustList }) => {
   return (
     <>
       {furnitustList ? (furnitustList.map((furniture) => (
-        <Link key={furniture._id} to={`furniturs/${furniture._id}`} >
+        <Link key={furniture._id} to={`/furniturs/${furniture._id}`} >
           <img className="w-50 h-50" src={furniture.image} alt="foto" />
           <h5>{furniture.name}</h5>
           <p>Описание товара и прочее</p>

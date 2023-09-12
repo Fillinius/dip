@@ -24,6 +24,13 @@ const RegisterForm = () => {
     }))
   }
 
+  const handleChangeMulti = (target) => {
+    setData((prevstate) => ({
+      ...prevstate,
+      [target.name]: target.value
+    }))
+  }
+
   const validatorConfig = {
     name: {
       isRequared: {
@@ -109,7 +116,7 @@ const RegisterForm = () => {
       <CheckBoxField
         name='licence'
         value={data.licence}
-        onChange={handleChange}
+        onChange={handleChangeMulti}
         error={errors.licence}
       >Подтвердить <a>лицензионное соглашение</a></CheckBoxField>
       <button

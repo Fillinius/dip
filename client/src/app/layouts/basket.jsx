@@ -8,6 +8,7 @@ import { cleaningItemBasket, getbasket, removeItemBasket } from '../store/basket
 
 const Basket = () => {
   const furnitursBasket = useSelector(getbasket())
+  const currentUser = useSelector(getCurrentUserData())
   const [furniturs, setFurniturs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [total, setTotal] = useState(0)
@@ -18,26 +19,51 @@ const Basket = () => {
       setFurniturs(furnitursBasket)
     }
   }, [furnitursBasket, furniturs])
+
   useEffect(() => {
     if (furniturs && isLoading) {
       setIsLoading(false)
     }
   }, [furniturs])
-  const currentUser = useSelector(getCurrentUserData())
 
-  if (furniturs) {
-    useEffect(() => {
+  useEffect(() => {
+    if (furniturs) {
       setTotal(furniturs.reduce((acc, item) => {
-        return acc + item.price
+        return acc + item.totalPrice
       }, 0))
-    }, [furniturs])
-  }
+    }
+  }, [furniturs])
 
   const handleDeleteItem = (id) => {
     dispatch(removeItemBasket(id))
   }
   const hahdleReset = () => {
     dispatch(cleaningItemBasket())
+  }
+  const handleIncrement = (id) => {
+    setFurniturs(furniturs.map(furnitur => {
+      if (furnitur._id === id) {
+        const newFurnitur = {
+          ...furnitur,
+          count: ++furnitur.count,
+          totalPrice: furnitur.count * furnitur.price,
+        }
+        return newFurnitur
+      }
+      return furnitur
+    }))
+  }
+  const handleDecrement = (id) => {
+    setFurniturs(furniturs.map(furnitur => {
+      if (furnitur._id === id) {
+        return {
+          ...furnitur,
+          count: furnitur.count > 0 ? --furnitur.count : 1,
+          totalPrice: furnitur.count * furnitur.price
+        }
+      }
+      return furnitur
+    }))
   }
   const renderitemsList = () => {
     return furniturs && (
@@ -47,17 +73,22 @@ const Basket = () => {
             key={item._id}
             id={item._id}
             name={item.name}
-            price={item.price}
+            price={item.totalPrice}
+            count={item.count}
             onDelete={handleDeleteItem}
+            increment={handleIncrement}
+            decrement={handleDecrement}
           />
         ))}
         <h3>Итоговая стоимость: {total} руб.</h3>
-        <button
+        {furniturs.length > 0 && <button
           className='btn btn-secondary'
-          onClick={hahdleReset}>Очистка корзины</button>
-        {currentUser
-          ? (<Link to='/basket/order'>Оформить заказ</Link>)
-          : <Link to='/Login'>Оформить заказ</Link>}
+          onClick={hahdleReset}>Очистка корзины</button>}
+        {furniturs.length > 0
+          ? currentUser
+            ? (<Link to='/basket/order'>Оформить заказ</Link>)
+            : <Link to='/Login'>Оформить заказ</Link>
+          : ''}
       </div>
     )
   }

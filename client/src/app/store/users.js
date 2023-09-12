@@ -80,13 +80,10 @@ const {
   usersReguestField,
   authRequestSuccess,
   authRequestFaild,
-  // userCreated,
   userLoggedOut,
   userUpdate,
 } = actions
 const authRequested = createAction('users/authRequested')
-// const userCreateRequested = createAction('users/usercreateRequested')
-// const createUserFailed = createAction('users/createUserFailed')
 const userUpdateRequested = createAction('users/userUpdateRequested')
 const userUpdateFailed = createAction('users/userUpdateFailed')
 
@@ -133,20 +130,6 @@ export const getUpdateUserData = (payload) => async (dispatch) => {
     dispatch(userUpdateFailed(error.message))
   }
 }
-
-// function createUser(payload) {
-//   return async function (dispatch) {
-//     dispatch(userCreateRequested())
-//     try {
-//       const content = await userService.create(payload)
-//       console.log(content)
-//       dispatch(userCreated(content))
-//       history.push('/furniturs')
-//     } catch (error) {
-//       dispatch(createUserFailed(error.message))
-//     }
-//   }
-// }
 
 export const logOut = () => (dispatch) => {
   localStorageService.removeAuthData()

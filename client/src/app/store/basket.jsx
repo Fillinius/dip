@@ -55,7 +55,7 @@ export const getbasketLoading = () => (state) => state.basket.isLoading
 export const createItemBasket = (payload) => async (dispatch) => {
   dispatch(basketCreateItemRequested())
   try {
-    dispatch(basketCreatedItem(payload))
+    dispatch(basketCreatedItem({ ...payload, count: 1, totalPrice: payload.price }))
   } catch (error) {
     dispatch(basketCreateItemFailed(error.message))
   }

@@ -8,7 +8,7 @@ const EditUserPage = () => {
   const dispatch = useDispatch()
   const currentUser = useSelector(getCurrentUserData())
   const [isLoading, setIsLoading] = useState(true)
-  const [errors, setErrors] = useState(null)
+  const [errors, setErrors] = useState({})
   const [data, setData] = useState()
 
   useEffect(() => {
@@ -44,9 +44,9 @@ const EditUserPage = () => {
     setErrors(errors)
     return Object.keys(errors).length === 0
   }
-  console.log(errors);
-  const isValid = {}
-  // const isValid = Object.keys(errors).length === 0
+  // console.log(errors);
+  // const isValid = {}
+  const isValid = Object.keys(errors).length === 0
 
   // блок валидатор
   const validatorConfig = {

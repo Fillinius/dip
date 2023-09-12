@@ -1,6 +1,7 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 import furnitursService from '../services/furnitursService'
 import registrationProductService from '../services/registrationProductService'
+import history from '../utils/history'
 
 const furnitursSlice = createSlice({
   name: 'furniturs',
@@ -92,7 +93,7 @@ export const getUpdateFurnitursData =
         furnitureId
       )
       dispatch(furnitursUpdate(data))
-      history.push(`/furniturs`)
+      history.push(`/furniturs/${data._id}`)
     } catch (error) {
       dispatch(furnitursUpdateFailed(error.message))
     }

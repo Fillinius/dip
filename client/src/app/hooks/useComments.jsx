@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { nanoid } from 'nanoid';
 import commentService from '../services/commentsService';
-// import localStorageService from '../services/localstorage.service';
 import { useSelector } from 'react-redux';
 import { getCurrentUserId } from '../store/users';
+import { useParams } from 'react-router-dom';
 
 const CommentsContext = React.createContext();
 
@@ -19,7 +19,7 @@ export const CommentsProvider = ({ children }) => {
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(null);
   // вариация получения userId
-  const furnitursId = useParam()
+  const furnitursId = useParams()
   //
   useEffect(() => {
     getComments();

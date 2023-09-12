@@ -7,21 +7,30 @@ import { deliveryList } from '../../utils/deliveryList';
 import RadioField from '../common/form/radioField';
 import { floorList } from '../../utils/floorList';
 import CheckBoxField from '../common/form/checkBoxField';
+import { useSelector } from 'react-redux';
+import { getbasket } from '../../store/basket';
 
 const OrderForm = () => {
   const [data, setData] = useState({
     email: '',
     text: '',
     deliveryType: '',
-    needLiftFloor: 'no',
+    needLiftFloor: '',
     agreement: false
   })
   const [errors, setErrors] = useState({})
+  const orderBasket = useSelector(getbasket())
   const history = useHistory()
   const handleReturnBasket = () => {
     history.push('/basket')
   }
   const handleChange = ({ target }) => {
+    setData((prevstate) => ({
+      ...prevstate,
+      [target.name]: target.value
+    }))
+  }
+  const handleChangeMulti = (target) => {
     setData((prevstate) => ({
       ...prevstate,
       [target.name]: target.value
@@ -52,6 +61,11 @@ const OrderForm = () => {
       isRequared: {
         message: 'Поле обязательно для заполнения'
       }
+    },
+    agreement: {
+      isRequared: {
+        message: 'Вы не можете использовать наш сервис без соглашения обработки персональных данных'
+      }
     }
   }
 
@@ -69,9 +83,9 @@ const OrderForm = () => {
     const isValid = validate()
 
     if (!isValid) return
-    console.log(data)
+    console.log({ ...data, order: orderBasket })
+    history.push('/furniturs')
   }
-
   return (
     <div className='container mt-5'>
       <div className='row'>
@@ -100,17 +114,18 @@ const OrderForm = () => {
               options={deliveryList}
               error={errors.deliveryType}
               defaultOption='Выберите вариант доставки' />
-            <RadioField
+            {data.deliveryType !== 'Pickup point' && <RadioField
               label='Нужен подъем на этаж?'
               options={floorList}
               name='needLiftFloor'
               value={data.needLiftFloor}
               onChange={handleChange}
-            />
+            />}
             <CheckBoxField
               name='agreement'
               value={data.agreement}
-              onChange={handleChange}
+              onChange={handleChangeMulti}
+              error={errors.agreement}
             ><a>Согласие на отбработку персональных данных</a></CheckBoxField>
             <button
               type='submit'
