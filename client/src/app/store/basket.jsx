@@ -30,6 +30,11 @@ const basketSlice = createSlice({
     },
     cleaningBasket: (state) => {
       state.entities = []
+    },
+    basketUpdate: (state, action) => {
+      state.entities[
+        state.entities.findIndex((u) => u._id === action.payload._id)
+      ] = action.payload
     }
   },
 }
@@ -38,7 +43,8 @@ const { reducer: basketReducer, actions } = basketSlice
 const {
   basketCreatedItem,
   itemRemove,
-  cleaningBasket
+  cleaningBasket,
+  basketUpdate
 } = actions
 
 const basketCreateItemRequested = createAction('basket/basketCreateItemRequested')
@@ -47,6 +53,22 @@ const itemRemoveRequested = createAction('basket/itemRemoveRequested')
 const itemRemoveFailed = createAction('basket/itemRemoveFailed')
 const cleaningBasketRequested = createAction('basket/cleaningBasketRequested')
 const cleaningBasketFailed = createAction('basket/cleaningBasketFailed')
+
+export const increment = (id) => (dispatch, getState) => {
+  const newData = getState().basket.entities.map(product => {
+    if (product._id === id) {
+      console.log(product);
+      return {
+        ...product,
+        count: { ...++product.count },
+        totalPrice: { ...product.count * product.price }
+      }
+    }
+    return { ...product }
+  })
+  console.log(newData, 'data');
+  dispatch(basketUpdate(newData));
+}
 
 export const getbasket = () => (state) => state.basket.entities
 
@@ -78,5 +100,5 @@ export const cleaningItemBasket = () => async (dispatch) => {
     dispatch(cleaningBasketFailed(error.message))
   }
 }
-
+//
 export default basketReducer

@@ -4,7 +4,7 @@ import StatusBuyItems from '../components/common/statusBuyItems';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUserData } from '../store/users';
-import { cleaningItemBasket, getbasket, removeItemBasket } from '../store/basket';
+import { cleaningItemBasket, getbasket, increment, removeItemBasket } from '../store/basket';
 
 const Basket = () => {
   const furnitursBasket = useSelector(getbasket())
@@ -41,29 +41,20 @@ const Basket = () => {
     dispatch(cleaningItemBasket())
   }
   const handleIncrement = (id) => {
-    setFurniturs(furniturs.map(furnitur => {
-      if (furnitur._id === id) {
-        const newFurnitur = {
-          ...furnitur,
-          count: ++furnitur.count,
-          totalPrice: furnitur.count * furnitur.price,
+    const newState = furniturs.map(product => {
+      if (product._id === id) {
+        return {
+          ...product,
+          count: ++product.count,
+          totalPrice: product.count * product.price
         }
-        return newFurnitur
       }
-      return furnitur
-    }))
+      return { ...product }
+    })
+    setFurniturs(newState)
   }
   const handleDecrement = (id) => {
-    setFurniturs(furniturs.map(furnitur => {
-      if (furnitur._id === id) {
-        return {
-          ...furnitur,
-          count: furnitur.count > 0 ? --furnitur.count : 1,
-          totalPrice: furnitur.count * furnitur.price
-        }
-      }
-      return furnitur
-    }))
+    dispatch(increment(id))
   }
   const renderitemsList = () => {
     return furniturs && (
